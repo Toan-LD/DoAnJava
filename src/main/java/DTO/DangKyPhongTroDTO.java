@@ -36,6 +36,4 @@ public class DangKyPhongTroDTO {
     public void setNgayVaoPhong(String ngayVaoPhong) {
         this.ngayVaoPhong = ngayVaoPhong;
     }
-    
-    
 }

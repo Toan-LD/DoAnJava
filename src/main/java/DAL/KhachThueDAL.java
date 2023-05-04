@@ -24,7 +24,7 @@ public class KhachThueDAL {
     
     //Load khách thuê đặt phòng
     public ResultSet LoadKhachThueDatPhong() throws Exception {
-        String sql = "select Username,MaKhach, TenKhach, Phai, CMND, NgheNghiep, QueQuan  from USER_KHACHTHUE where TinhTrang = 1";
+        String sql = "select Username,MaKhach, TenKhach, Phai, CMND, NgheNghiep, QueQuan  from USER_KHACHTHUE where TinhTrang = 1 and IsAdmin = 0";
         rs = data.executeQuery(sql);
         return rs;
     }
@@ -69,7 +69,7 @@ public class KhachThueDAL {
         giatri[5] = khachthue.getNgheNghiep();
         giatri[6] = khachthue.getTaiKhoan();
         giatri[7] = khachthue.getMatKhau();
-        return data.Update("{call ThemKhachThueDatPhong(?,?,?,?,?,?,?,?)}", giatri, thamso);
+        return data.Update("{call ThemKhachThueKhongDatPhong(?,?,?,?,?,?,?,?)}", giatri, thamso);
     }
     //thêm khách thuê có đặt phòng
     public int ThemKhachThueDatPhong(KhachThueDTO khachthue){

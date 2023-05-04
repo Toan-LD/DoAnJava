@@ -251,8 +251,8 @@ public class formKhachThue extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         gbThongTinKhach.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin khách"));
@@ -559,7 +559,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(108, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gbThongTinKhach, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -576,12 +576,12 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(90, 90, 90)
+                        .addComponent(btnThoat))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(btnThoat)))
-                .addGap(49, 49, 49))
+                        .addGap(28, 28, 28)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         jLabel1.getAccessibleContext().setAccessibleParent(this);
@@ -879,16 +879,16 @@ public class formKhachThue extends javax.swing.JInternalFrame {
 
     private void rbtnKhachKhongDatPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnKhachKhongDatPhongActionPerformed
         // TODO add your handling code here:
-        if(rbtnKhachKhongDatPhong.isSelected()) {
-            rbtnKhachCoDatPhong.setSelected(false);
-        }
+//        if(rbtnKhachKhongDatPhong.isSelected()) {
+//            rbtnKhachCoDatPhong.setSelected(false);
+//        }
     }//GEN-LAST:event_rbtnKhachKhongDatPhongActionPerformed
 
     private void rbtnKhachCoDatPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnKhachCoDatPhongActionPerformed
         // TODO add your handling code here:
-        if(rbtnKhachCoDatPhong.isSelected()) {            
-            rbtnKhachKhongDatPhong.setSelected(false);
-        }
+//        if(rbtnKhachCoDatPhong.isSelected()) {            
+//            rbtnKhachKhongDatPhong.setSelected(false);
+//        }
     }//GEN-LAST:event_rbtnKhachCoDatPhongActionPerformed
 
     private void txtTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTaiKhoanActionPerformed
