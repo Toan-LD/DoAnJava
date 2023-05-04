@@ -408,7 +408,8 @@ public class formDangKyPhong extends javax.swing.JInternalFrame {
                 DangKyPhongTroDTO dangKyPhongDTO = new DangKyPhongTroDTO();
                 dangKyPhongDTO.setMaKhach((String) tblKhach.getValueAt(index, 0));
                 dangKyPhongDTO.setMaPhong((String) cbbDanhSachPhongOGhep.getSelectedItem());
-//                dangKyPhongDTO.setNgayVaoPhong(dayFormat.format(ngayVaoPhong.getTime()));
+                SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MM/yyyy");
+                dangKyPhongDTO.setNgayVaoPhong(dayFormat.format(ngayVaoPhong.getTime()));
                 if(dangKyPhong.ThemKhachOGhep(dangKyPhongDTO) > 0) {
                     JOptionPane.showMessageDialog(rootPane, "Đăng ký thành công");
                     loadTbl.loadJTable(dangKyPhong.LoadKhachThueChuaCoPhong(), tblKhach);
