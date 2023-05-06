@@ -111,39 +111,36 @@ ADD CONSTRAINT FK_DICHVU_CTDICHVU FOREIGN KEY (MaDichVu)
 REFERENCES DICH_VU (MaDichVu)
 
 --------------Procedure---------------------
-create proc XoaKhach
+CREATE PROC XoaKhachThue
 (
-@makhach varchar(5),
-@taikhoan varchar(25)
+    @MaKhach varchar(5),
+    @TaiKhoan varchar(25)
 )
-as
-	begin
-	--nếu như khách không có tài khoản và chưa thuê phòng
-	if(@taikhoan IS NULL AND NOT EXISTS(select @makhach from CT_KHACH_THUE where @makhach = MaKhach))
-			begin
-				delete from KHACH_THUE where MaKhach = @makhach
-			end
-		else
-	--nếu như khách không có tài khoản và đã thuê phòng
-	if(@taikhoan IS NULL AND EXISTS(select @makhach from CT_KHACH_THUE where @makhach = MaKhach))
-			begin
-				delete from CT_KHACH_THUE where MaKhach = @makhach
-				delete from KHACH_THUE where MaKhach = @makhach
-			end
-	--nếu khách có tài khoản và chưa thuê phòng
-	if(@taikhoan IS NOT NULL AND NOT EXISTS(select @makhach from CT_KHACH_THUE where @makhach = MaKhach))
-		begin
-			delete from USER_KHACHTHUE where MaKhach = @makhach
-			delete from KHACH_THUE where MaKhach = @makhach
-		end
-	--nếu khách có tài khoản và đã thuê phòng
-	if(@taikhoan IS NOT NULL AND EXISTS(select @makhach from CT_KHACH_THUE where @makhach = MaKhach))
-		begin
-			delete from CT_KHACH_THUE where MaKhach = @makhach
-			delete from USER_KHACHTHUE where MaKhach = @makhach
-			delete from KHACH_THUE where MaKhach = @makhach
-		end
-	end
+AS
+BEGIN
+    -- Kiểm tra nếu khách không có trong bảng CT_KHACH_THUE thì xóa thông tin của khách và kết thúc thủ tục
+    IF(@TaiKhoan IS NOT NULL AND NOT EXISTS(SELECT @MaKhach FROM CT_KHACH_THUE WHERE @MaKhach = MaKhach))
+    BEGIN
+        DELETE FROM USER_KHACHTHUE WHERE MaKhach = @MaKhach;
+        DELETE FROM KHACH_THUE WHERE MaKhach = @MaKhach;
+        RETURN;
+    END;
+
+    -- Kiểm tra nếu khách có tài khoản và đã thuê phòng
+    IF(@TaiKhoan IS NOT NULL AND EXISTS(SELECT @MaKhach FROM CT_KHACH_THUE WHERE @MaKhach = MaKhach))
+    BEGIN
+        DECLARE @MaPhong varchar(5);
+        SELECT @MaPhong = MaPhong FROM CT_KHACH_THUE WHERE MaKhach = @MaKhach;
+
+        -- Xóa thông tin của khách trong các bảng
+        DELETE FROM CT_KHACH_THUE WHERE MaKhach = @MaKhach;
+        DELETE FROM USER_KHACHTHUE WHERE MaKhach = @MaKhach;
+        DELETE FROM KHACH_THUE WHERE MaKhach = @MaKhach;
+
+        -- Giảm giá trị cột SoNguoi trong bảng PHONG_TRO đi 1
+        UPDATE PHONG_TRO SET SoNguoi -= 1 WHERE MaPhong = @MaPhong;
+    END;
+END;
 
 create proc SuaKhachThue
 (

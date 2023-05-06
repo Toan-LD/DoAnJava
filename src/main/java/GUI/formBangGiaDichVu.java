@@ -113,6 +113,7 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Mã Loại Dịch Vụ");
 
+        btnThem.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\add20.png")); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +129,7 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Thông Tin Dịch Vụ");
 
+        btnSua.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\edit20.png")); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +137,7 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
             }
         });
 
+        btnThemMoi.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\addnew20.png")); // NOI18N
         btnThemMoi.setText("Thêm Mới");
         btnThemMoi.setEnabled(false);
         btnThemMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +150,7 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Mã Dịch Vụ");
 
+        btnThoat.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\thoat20.jpg")); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +158,7 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCapNhat.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\update20.png")); // NOI18N
         btnCapNhat.setText("Cập Nhật");
         btnCapNhat.setEnabled(false);
         btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +171,7 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Tên Dịch Vụ");
 
+        btnXoa.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\thungrac20.jpg")); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.setEnabled(false);
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +197,7 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
                             .addComponent(btnSua)
                             .addGap(18, 18, 18)
                             .addComponent(btnXoa)
-                            .addGap(23, 23, 23)
+                            .addGap(18, 18, 18)
                             .addComponent(btnThoat))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -205,9 +211,9 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtTenDichVu)
                                     .addComponent(txtGiaTien, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(44, 44, 44)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
+                                    .addGap(44, 44, 44)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel5)
                                         .addComponent(jLabel6))
@@ -216,9 +222,10 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
                                         .addComponent(txtQuyCach, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(cbbMaLoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createSequentialGroup()
+                                    .addGap(41, 41, 41)
                                     .addComponent(btnThemMoi)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnCapNhat))))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

@@ -68,7 +68,7 @@ public class formMain extends javax.swing.JFrame {
 
         menuBar.setForeground(new java.awt.Color(51, 255, 51));
 
-        fileMenu.setIcon(new javax.swing.ImageIcon("D:\\learn\\java\\DoAnJava\\src\\main\\java\\pic\\user-group-icon.png")); // NOI18N
+        fileMenu.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\uer32.png")); // NOI18N
         fileMenu.setMnemonic('k');
         fileMenu.setText("Khách Thuê");
         fileMenu.setToolTipText("");
