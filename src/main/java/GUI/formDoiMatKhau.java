@@ -4,8 +4,13 @@
  */
 package GUI;
 
+import BLL.DoiMatKhauBLL;
+import DTO.DoiMatKhauDTO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +21,7 @@ public class formDoiMatKhau extends javax.swing.JInternalFrame {
     /**
      * Creates new form formDoiMatKhau
      */
+    DoiMatKhauBLL doiMatKhauBLL = new DoiMatKhauBLL();
     public formDoiMatKhau() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize(); //Lấy độ dài màn hình
@@ -43,8 +49,8 @@ public class formDoiMatKhau extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtTaiKhoan = new javax.swing.JTextField();
         txtMatKhau = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtMatKhauMoi = new javax.swing.JTextField();
+        txtNhapLaiMatKhau = new javax.swing.JTextField();
         btnDoiMatKhau = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
 
@@ -78,8 +84,8 @@ public class formDoiMatKhau extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTaiKhoan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMatKhau, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNhapLaiMatKhau, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68))
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,19 +102,29 @@ public class formDoiMatKhau extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNhapLaiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
         btnDoiMatKhau.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\doi20.jpg")); // NOI18N
         btnDoiMatKhau.setText("Đổi mật khẩu");
+        btnDoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoiMatKhauActionPerformed(evt);
+            }
+        });
 
         btnThoat.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\thoat20.jpg")); // NOI18N
         btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,6 +156,39 @@ public class formDoiMatKhau extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(txtMatKhau.getText().equals("")|| txtTaiKhoan.getText().equals("")||txtMatKhauMoi.getText().equals("")||txtNhapLaiMatKhau.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Không được để trống");
+                return;
+            }
+            
+            DoiMatKhauDTO doiMatKhauDTO = new DoiMatKhauDTO();
+            doiMatKhauDTO.setTaiKhoan(txtTaiKhoan.getText());
+            doiMatKhauDTO.setMatKhau(txtMatKhau.getText());
+            doiMatKhauDTO.setMatKhauMoi(txtMatKhauMoi.getText());
+            if(doiMatKhauBLL.KiemTraTaiKhoan(doiMatKhauDTO).next() == false) {
+                JOptionPane.showMessageDialog(rootPane, "Tai Khoan Khong Hop Le");
+                return;
+            } else {
+                if(txtMatKhauMoi.getText().equals(txtNhapLaiMatKhau.getText())) {
+                    if(doiMatKhauBLL.DoiMatKhauADMIN(doiMatKhauDTO) > 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thành công");
+                    }
+                }else 
+                JOptionPane.showConfirmDialog(rootPane, "Mật khẩu khoing trùng khớp");
+            } 
+        } catch  (Exception ex) 
+        {
+            Logger.getLogger(formDoiMatKhau.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnDoiMatKhauActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,9 +233,9 @@ public class formDoiMatKhau extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtMatKhau;
+    private javax.swing.JTextField txtMatKhauMoi;
+    private javax.swing.JTextField txtNhapLaiMatKhau;
     private javax.swing.JTextField txtTaiKhoan;
     // End of variables declaration//GEN-END:variables
 }
