@@ -1,4 +1,5 @@
 CREATE DATABASE QUANLYPHONGTRO
+
 CREATE TABLE USER_KHACHTHUE --Done
 (
 	UserID INT identity (1,1)PRIMARY KEY,
@@ -62,6 +63,7 @@ CREATE TABLE DICH_VU --Done
 	QuyCach nvarchar(30),
 )
 
+CREATE TABLE LOAI_DICH_VU
 (
 	MaLoaiDichVu varchar(5) primary key,
 	TenLoaiDichVu nvarchar(20),
@@ -111,6 +113,41 @@ ADD CONSTRAINT FK_DICHVU_CTDICHVU FOREIGN KEY (MaDichVu)
 REFERENCES DICH_VU (MaDichVu)
 
 --------------Procedure---------------------
+create proc ThemKhachThueKhongDatPhong
+(
+@makhach varchar(5),
+@tenkhach nvarchar(30),
+@phai nvarchar(5),
+@cmnd varchar(15),
+@quequan nvarchar(30),
+@nghenghiep nvarchar(30),
+@taikhoan varchar(25),
+@matkhau varchar(25)
+)
+as
+	begin
+			insert into KHACH_THUE values(@makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
+			insert into USER_KHACHTHUE (Username,Pwd,IsAdmin,MaKhach, TenKhach,Phai,CMND,QueQuan,NgheNghiep)values(@taikhoan,@matkhau,0, @makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
+	end
+
+	create proc ThemKhachThueDatPhong
+(
+@makhach varchar(5),
+@tenkhach nvarchar(30),
+@phai nvarchar(5),
+@cmnd varchar(15),
+@quequan nvarchar(30),
+@nghenghiep nvarchar(30),
+@taikhoan varchar(25),
+@matkhau varchar(25)
+)
+as
+	begin
+			insert into KHACH_THUE values(@makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
+			insert into USER_KHACHTHUE (Username,Pwd,IsAdmin,MaKhach, TenKhach,Phai,CMND,QueQuan,NgheNghiep)values(@taikhoan,@matkhau,0, @makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
+			update USER_KHACHTHUE set TinhTrang = 1 where MaKhach = @makhach 
+	end
+
 CREATE PROC XoaKhachThue
 (
     @MaKhach varchar(5),
@@ -281,41 +318,4 @@ create proc XoaDichVu
 as
 	begin
 		delete from DICH_VU where MaDichVu  = @MaDichVu
-	end
-
-
-
-create proc ThemKhachThueKhongDatPhong
-(
-@makhach varchar(5),
-@tenkhach nvarchar(30),
-@phai nvarchar(5),
-@cmnd varchar(15),
-@quequan nvarchar(30),
-@nghenghiep nvarchar(30),
-@taikhoan varchar(25),
-@matkhau varchar(25)
-)
-as
-	begin
-			insert into KHACH_THUE values(@makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
-			insert into USER_KHACHTHUE (Username,Pwd,IsAdmin,MaKhach, TenKhach,Phai,CMND,QueQuan,NgheNghiep)values(@taikhoan,@matkhau,0, @makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
-	end
-
-	create proc ThemKhachThueDatPhong
-(
-@makhach varchar(5),
-@tenkhach nvarchar(30),
-@phai nvarchar(5),
-@cmnd varchar(15),
-@quequan nvarchar(30),
-@nghenghiep nvarchar(30),
-@taikhoan varchar(25),
-@matkhau varchar(25)
-)
-as
-	begin
-			insert into KHACH_THUE values(@makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
-			insert into USER_KHACHTHUE (Username,Pwd,IsAdmin,MaKhach, TenKhach,Phai,CMND,QueQuan,NgheNghiep)values(@taikhoan,@matkhau,0, @makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
-			update USER_KHACHTHUE set TinhTrang = 1 where MaKhach = @makhach 
 	end
