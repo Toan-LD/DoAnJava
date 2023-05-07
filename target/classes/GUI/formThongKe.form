@@ -63,6 +63,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="txtTienTheoPhong" min="-2" pref="117" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnBieuDo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnThoat" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
@@ -103,6 +105,7 @@
                   <Component id="txtDoanhThuThang" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtTienTheoPhong" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnThoat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBieuDo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
@@ -388,6 +391,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel6"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnBieuDo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bi&#x1ec3;u &#x110;&#x1ed3;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBieuDoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

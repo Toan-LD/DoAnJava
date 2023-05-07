@@ -5,13 +5,21 @@
 package GUI;
 
 import BLL.ThongKeBLL;
+import DAL.DBAccess;
 import DTO.ThongKeDTO;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -66,6 +74,7 @@ public class formThongKe extends javax.swing.JInternalFrame {
         txtDoanhThuThang = new javax.swing.JTextField();
         lblThang = new javax.swing.JLabel();
         lblPhong = new javax.swing.JLabel();
+        btnBieuDo = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -234,6 +243,13 @@ public class formThongKe extends javax.swing.JInternalFrame {
 
         lblPhong.setText("jLabel6");
 
+        btnBieuDo.setText("Biểu Đồ");
+        btnBieuDo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBieuDoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -268,6 +284,8 @@ public class formThongKe extends javax.swing.JInternalFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(txtTienTheoPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBieuDo)
+                                    .addGap(18, 18, 18)
                                     .addComponent(btnThoat))
                                 .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -297,7 +315,8 @@ public class formThongKe extends javax.swing.JInternalFrame {
                     .addComponent(txtTongDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDoanhThuThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTienTheoPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThoat))
+                    .addComponent(btnThoat)
+                    .addComponent(btnBieuDo))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -358,6 +377,49 @@ public class formThongKe extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tblDanhsachHoaDonMouseClicked
 
+    private void btnBieuDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBieuDoActionPerformed
+        Connection con;
+        ThongKeDTO thongkeDTO = new ThongKeDTO();
+        DBAccess data = new DBAccess();
+        con = data.getConnection();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String sql = "select  PARSENAME(convert(varchar,convert(money, sum(tinhtienphong.giatien+ tinhtiendichvu.giatien)),1),2 ) as 'giatien',RIGHT(CONVERT(varchar(10), tinhtiendichvu.NgayLap, 103), 7) as 'date' from tinhtienphong, tinhtiendichvu where tinhtienphong.maphong = tinhtiendichvu.maphong and RIGHT(CONVERT(varchar(10), tinhtiendichvu.NgayLap, 103),7) = RIGHT(CONVERT(varchar(10), '"+thongkeDTO.getNgayLap()+"', 103),7) and RIGHT(CONVERT(varchar(10), tinhtienphong.NgayLap, 103),7) = RIGHT(CONVERT(varchar(10), '"+thongkeDTO.getNgayLap()+"', 103),7)";
+        try (PreparedStatement statement = con.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                String date = resultSet.getString("date");
+                int giatien = resultSet.getInt("giatien");
+                dataset.addValue(giatien, "Total", String.valueOf(date));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Tạo biểu đồ cột
+        JFreeChart chart = ChartFactory.createBarChart(
+                "THỐNG KÊ",        // Tiêu đề biểu đồ
+                "Tháng",         // Tên trục x
+                "Tiền",            // Tên trục y
+                dataset            // Dataset
+        );
+
+        // Hiển thị biểu đồ trong cửa sổ
+        JFrame frame = new JFrame("Bar Chart");
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new Dimension(500, 400));
+        frame.setContentPane(chartPanel);
+        frame.pack();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnBieuDoActionPerformed
+
     private void TongTienTheoThangCuaPhong() throws Exception {
         try {
             int index = tblDanhsachHoaDon.getSelectedRow();
@@ -417,6 +479,7 @@ public class formThongKe extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBieuDo;
     private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
