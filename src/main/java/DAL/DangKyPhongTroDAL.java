@@ -22,11 +22,11 @@ public class DangKyPhongTroDAL {
     }   
 
     public ResultSet LoadPhongChuaCoKhach() throws Exception {
-        return rs = data.executeQuery("select MaPhong from PHONG_TRO where SoNguoi is Null");
+        return rs = data.executeQuery("select MaPhong from PHONG_TRO where TrangThai = 0");
     }
     
     public ResultSet LoadPhongDaCoKhach() throws Exception{
-        return rs =data.executeQuery("select MaPhong from PHONG_TRO where SoNguoi is not null");
+        return rs =data.executeQuery("select MaPhong from PHONG_TRO where TrangThai =1 ");
     }
     
     public ResultSet LoadChiTietKhachThue(DangKyPhongTroDTO dangKyPhong) throws Exception {

@@ -814,8 +814,8 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         if (txtMaKhach.getText().equals("") || txtTenKhach.getText().equals("") || txtCMND.getText().equals("") || txtNgheNghiep.getText().equals("") || txtQueQuan.getText().equals("")) {
             if(rbtnKhachCoDatPhong.isSelected() && txtMatKhau.getText().equals("")||txtTaiKhoan.getText().equals("")) {
                 JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào không được để trống");
-            return;
-            } else {
+                return;
+            }else {
                 JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào không được để trống");
             }
         }
@@ -831,7 +831,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         khachThueDTO.setMatKhau(txtMatKhau.getText());
 
         if(rbtnKhachCoDatPhong.isSelected()) {
-            System.out.println("hehe");
+//            System.out.println("hehe");
             if(khachthue.ThemKhachThueDatPhong(khachThueDTO) > 0) {
                 try {
                     JOptionPane.showMessageDialog(rootPane,"Đã thêm khách thuê thành công");
@@ -849,7 +849,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         }
         
         if(rbtnKhachKhongDatPhong.isSelected()) {
-            System.out.println("huhu");
+//            System.out.println("huhu");
             if(khachthue.ThemKhachThueKhongDatPhong(khachThueDTO) > 0) {
                 try {
                     JOptionPane.showMessageDialog(rootPane, "Thêm khách thuê thành công");

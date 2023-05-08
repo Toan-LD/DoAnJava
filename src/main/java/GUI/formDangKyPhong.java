@@ -449,6 +449,9 @@ public class formDangKyPhong extends javax.swing.JInternalFrame {
     private void rbtnKhachOGhepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnKhachOGhepActionPerformed
         // TODO add your handling code here:
         try {
+            if(rbtnKhachOGhep.isSelected()) {
+                rbtnKhachThueMoi.setSelected(false);
+            }
             cbbDanhSachPhongOGhep.setEnabled(true);
             cbbDanhSachPhongTrong.setEnabled(false);
             btnThemKhach.setEnabled(true);
@@ -461,6 +464,9 @@ public class formDangKyPhong extends javax.swing.JInternalFrame {
     private void rbtnKhachThueMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnKhachThueMoiActionPerformed
         // TODO add your handling code here:
         try{
+            if(rbtnKhachThueMoi.isSelected()) {
+                rbtnKhachOGhep.setSelected(false);
+            }
             cbbDanhSachPhongTrong.setEnabled(true);
             cbbDanhSachPhongOGhep.setEnabled(false);
             btnThemKhach.setEnabled(true);

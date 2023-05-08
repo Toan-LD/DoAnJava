@@ -63,7 +63,6 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
         btnCapNhat = new javax.swing.JButton();
         txtTenDichVu = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        btnXoa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thông tin dịch vụ");
@@ -171,15 +170,6 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Tên Dịch Vụ");
 
-        btnXoa.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\thungrac20.jpg")); // NOI18N
-        btnXoa.setText("Xóa");
-        btnXoa.setEnabled(false);
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,11 +183,9 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnThem)
-                            .addGap(18, 18, 18)
+                            .addGap(36, 36, 36)
                             .addComponent(btnSua)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnXoa)
-                            .addGap(18, 18, 18)
+                            .addGap(36, 36, 36)
                             .addComponent(btnThoat))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -261,8 +249,7 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
-                    .addComponent(btnThoat)
-                    .addComponent(btnXoa))
+                    .addComponent(btnThoat))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -358,7 +345,7 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
         txtGiaTien.setEnabled(false);
         txtQuyCach.setEnabled(false);
         cbbMaLoaiDichVu.setEnabled(false);
-        btnXoa.setEnabled(true);
+//        btnXoa.setEnabled(true);
         int index=tblDichVu.getSelectedRow();
         txtMaDichVu.setText((String) tblDichVu.getValueAt(index,0));
         txtTenDichVu.setText((String) tblDichVu.getValueAt(index,1));
@@ -398,35 +385,6 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_btnCapNhatActionPerformed
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
-        String maDichVu = txtMaDichVu.getText();
-        String tenDichVu = txtTenDichVu.getText();
-        int thongBao = JOptionPane.showConfirmDialog(rootPane, "Bạn có muốn xóa dịch vụ có Mã dịch vụ: " +maDichVu+ " ,Tên dịch vụ: " + tenDichVu + " ?", "Thông báo" ,JOptionPane.YES_NO_OPTION);
-        if(thongBao == JOptionPane.YES_OPTION) {
-            BangGiaDichVuDTO bangGiaDichVuDTO = new BangGiaDichVuDTO();
-            bangGiaDichVuDTO.setMaDichVu(maDichVu);
-            if(bangGiaBLL.XoaDichVu(bangGiaDichVuDTO) > 0) {
-                try {
-                    JOptionPane.showMessageDialog(rootPane, "Xóa thành công thành công");
-                    loadTbl.loadJTable(bangGiaBLL.LoadThongTinDichVu(), tblDichVu);
-                    txtMaDichVu.setText("");
-                    txtTenDichVu.setText("");
-                    txtQuyCach.setText("");
-                    txtGiaTien.setText("");
-                    cbbMaLoaiDichVu.getItemAt(0);
-                    btnCapNhat.setEnabled(false);
-                    btnThemMoi.setEnabled(false);
-                    btnXoa.setEnabled(false);
-                } catch(Exception ex) {
-                    Logger.getLogger(formBangGiaDichVu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        
-        
-    }//GEN-LAST:event_btnXoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -469,7 +427,6 @@ public class formBangGiaDichVu extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemMoi;
     private javax.swing.JButton btnThoat;
-    private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cbbMaLoaiDichVu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

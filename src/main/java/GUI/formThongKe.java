@@ -55,14 +55,12 @@ public class formThongKe extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblTienPhong = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         txtTienTheoPhong = new javax.swing.JTextField();
         btnThoat = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblTienDichVu = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblThang = new javax.swing.JTable();
@@ -70,11 +68,7 @@ public class formThongKe extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDanhsachHoaDon = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        txtTongDoanhThu = new javax.swing.JTextField();
-        txtDoanhThuThang = new javax.swing.JTextField();
-        lblThang = new javax.swing.JLabel();
         lblPhong = new javax.swing.JLabel();
-        btnBieuDo = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -126,8 +120,6 @@ public class formThongKe extends javax.swing.JInternalFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("Tổng doanh thu");
-
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,8 +159,6 @@ public class formThongKe extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Thống Kê Hóa Đơn");
-
-        jLabel3.setText("Tổng doanh thu tháng");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tháng"));
         jPanel1.setPreferredSize(new java.awt.Dimension(478, 252));
@@ -239,16 +229,7 @@ public class formThongKe extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Tổng tiền phòng");
 
-        lblThang.setText("jLabel5");
-
         lblPhong.setText("jLabel6");
-
-        btnBieuDo.setText("Biểu Đồ");
-        btnBieuDo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBieuDoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -261,19 +242,9 @@ public class formThongKe extends javax.swing.JInternalFrame {
                         .addGap(360, 360, 360)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(txtTongDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtDoanhThuThang, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblThang)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -284,8 +255,6 @@ public class formThongKe extends javax.swing.JInternalFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(txtTienTheoPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnBieuDo)
-                                    .addGap(18, 18, 18)
                                     .addComponent(btnThoat))
                                 .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -305,18 +274,12 @@ public class formThongKe extends javax.swing.JInternalFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(lblPhong)
-                    .addComponent(lblThang))
+                    .addComponent(lblPhong))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTongDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDoanhThuThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTienTheoPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThoat)
-                    .addComponent(btnBieuDo))
+                    .addComponent(btnThoat))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -332,7 +295,7 @@ public class formThongKe extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             loadTbl.loadJTable(thongKeBLL.LoadThang(), tblThang);
-            lblThang.setVisible(false);
+//            lblThang.setVisible(false);
             lblPhong.setVisible(false);
             TinhTienTongDoanhThu();
         } catch (Exception ex) {
@@ -344,16 +307,16 @@ public class formThongKe extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             int index = tblThang.getSelectedRow();
-            lblThang.setText((String) tblThang.getValueAt(index, 0));
+//            lblThang.setText((String) tblThang.getValueAt(index, 0));
             
             ThongKeDTO thongKeDTO = new ThongKeDTO();
             thongKeDTO.setNgayLap((String) tblThang.getValueAt(index, 0));
-            loadTbl.loadJTable(thongKeBLL.LoadHDTheoThang(thongKeDTO), tblThang);
+            loadTbl.loadJTable(thongKeBLL.LoadHDTheoThang(thongKeDTO), tblDanhsachHoaDon);
             
-            ResultSet rs = thongKeBLL.TongTienTheoThang(thongKeDTO);
-            while(rs.next()) {
-                txtDoanhThuThang.setText(rs.getString(1) + "vnd");
-            }
+//            ResultSet rs = thongKeBLL.TongTienTheoThang(thongKeDTO);
+//            while(rs.next()) {
+//                txtDoanhThuThang.setText(rs.getString(1) + "vnd");
+//            }
         } catch (Exception ex) {
             Logger.getLogger(formThongKe.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -369,56 +332,13 @@ public class formThongKe extends javax.swing.JInternalFrame {
             
             loadTbl.loadJTable(thongKeBLL.LoadTienPhongTheoMa(thongKeDTO), tblTienPhong);
             loadTbl.loadJTable(thongKeBLL.LoadTienDichVuTheoMa(thongKeDTO), tblTienDichVu);
-            lblThang.setVisible(true);
+//            lblThang.setVisible(true);
             TongTienTheoThangCuaPhong();
             
         } catch (Exception ex) {
             Logger.getLogger(formThongKe.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tblDanhsachHoaDonMouseClicked
-
-    private void btnBieuDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBieuDoActionPerformed
-        Connection con;
-        ThongKeDTO thongkeDTO = new ThongKeDTO();
-        DBAccess data = new DBAccess();
-        con = data.getConnection();
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        String sql = "select  PARSENAME(convert(varchar,convert(money, sum(tinhtienphong.giatien+ tinhtiendichvu.giatien)),1),2 ) as 'giatien',RIGHT(CONVERT(varchar(10), tinhtiendichvu.NgayLap, 103), 7) as 'date' from tinhtienphong, tinhtiendichvu where tinhtienphong.maphong = tinhtiendichvu.maphong and RIGHT(CONVERT(varchar(10), tinhtiendichvu.NgayLap, 103),7) = RIGHT(CONVERT(varchar(10), '"+thongkeDTO.getNgayLap()+"', 103),7) and RIGHT(CONVERT(varchar(10), tinhtienphong.NgayLap, 103),7) = RIGHT(CONVERT(varchar(10), '"+thongkeDTO.getNgayLap()+"', 103),7)";
-        try (PreparedStatement statement = con.prepareStatement(sql);
-             ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {
-                String date = resultSet.getString("date");
-                int giatien = resultSet.getInt("giatien");
-                dataset.addValue(giatien, "Total", String.valueOf(date));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Tạo biểu đồ cột
-        JFreeChart chart = ChartFactory.createBarChart(
-                "THỐNG KÊ",        // Tiêu đề biểu đồ
-                "Tháng",         // Tên trục x
-                "Tiền",            // Tên trục y
-                dataset            // Dataset
-        );
-
-        // Hiển thị biểu đồ trong cửa sổ
-        JFrame frame = new JFrame("Bar Chart");
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(500, 400));
-        frame.setContentPane(chartPanel);
-        frame.pack();
-        frame.setVisible(true);
-    }//GEN-LAST:event_btnBieuDoActionPerformed
 
     private void TongTienTheoThangCuaPhong() throws Exception {
         try {
@@ -438,10 +358,10 @@ public class formThongKe extends javax.swing.JInternalFrame {
         }
     }
     private void TinhTienTongDoanhThu() throws SQLException {
-        ResultSet rs  = thongKeBLL.TongTien();
-        while(rs.next()) {
-            txtTongDoanhThu.setText(rs.getString(1)+"vnd");
-        }
+//        ResultSet rs  = thongKeBLL.TongTien();
+//        while(rs.next()) {
+//            txtTongDoanhThu.setText(rs.getString(1)+"vnd");
+//        }
     }
     /**
      * @param args the command line arguments
@@ -479,11 +399,8 @@ public class formThongKe extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBieuDo;
     private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -494,13 +411,10 @@ public class formThongKe extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblPhong;
-    private javax.swing.JLabel lblThang;
     private javax.swing.JTable tblDanhsachHoaDon;
     private javax.swing.JTable tblThang;
     private javax.swing.JTable tblTienDichVu;
     private javax.swing.JTable tblTienPhong;
-    private javax.swing.JTextField txtDoanhThuThang;
     private javax.swing.JTextField txtTienTheoPhong;
-    private javax.swing.JTextField txtTongDoanhThu;
     // End of variables declaration//GEN-END:variables
 }

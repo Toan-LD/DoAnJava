@@ -35,23 +35,9 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTongDoanhThu" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                          <Component id="jPanel1" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jPanel1" min="-2" pref="222" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtDoanhThuThang" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblThang" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -63,8 +49,6 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="txtTienTheoPhong" min="-2" pref="117" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnBieuDo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnThoat" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
@@ -93,19 +77,13 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPhong" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblThang" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtTongDoanhThu" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDoanhThuThang" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtTienTheoPhong" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnThoat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnBieuDo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
@@ -169,11 +147,6 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng doanh thu"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtTienTheoPhong">
     </Component>
     <Component class="javax.swing.JButton" name="btnThoat">
@@ -249,11 +222,6 @@
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng K&#xea; H&#xf3;a &#x110;&#x1a1;n"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng doanh thu th&#xe1;ng"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -378,27 +346,10 @@
         <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n ph&#xf2;ng"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTongDoanhThu">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDoanhThuThang">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblThang">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel5"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblPhong">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel6"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnBieuDo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Bi&#x1ec3;u &#x110;&#x1ed3;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBieuDoActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

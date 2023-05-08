@@ -16,7 +16,7 @@ public class BangGiaPhongTroDAL {
     DBAccess data = new DBAccess();
     
     public ResultSet LoadThongTinGiaThue() throws Exception {
-        String sql = "select SoNguoi, PARSENAME(convert(varchar, convert(money, GiaTien),1),2) as GiaTien from GIA_THUE";
+        String sql = "select SoNguoi, PARSENAME(convert(varchar, convert(money, GiaTien),1),2) as GiaTien from GIA_THUE where SoNguoi != 0";
         return rs = data.executeQuery(sql);
     }
     
