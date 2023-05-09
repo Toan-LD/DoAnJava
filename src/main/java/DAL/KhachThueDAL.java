@@ -6,6 +6,8 @@ package DAL;
 
 import DTO.KhachThueDTO;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -69,22 +71,61 @@ public class KhachThueDAL {
         giatri[5] = khachthue.getNgheNghiep();
         giatri[6] = khachthue.getTaiKhoan();
         giatri[7] = khachthue.getMatKhau();
+        // Thực hiện truy vấn kiểm tra CMND đã tồn tại hay chưa
+        ResultSet rs = data.ExecuteTruyVanTraVeDongDuLieu("SELECT COUNT(*) FROM KHACH_THUE WHERE CMND = ?", new Object[]{khachthue.getCmnd()},1);
+        try {
+            if (rs.next() && rs.getInt(1) > 0) {
+                // CMND đã tồn tại, hiện thông báo lỗi và không thực hiện thêm mới
+                JOptionPane.showMessageDialog(null, "CMND đã tồn tại, không thể thêm mới khách thuê.");
+                return 0;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return data.Update("{call ThemKhachThueKhongDatPhong(?,?,?,?,?,?,?,?)}", giatri, thamso);
     }
     //thêm khách thuê có đặt phòng
+//    public int ThemKhachThueDatPhong(KhachThueDTO khachthue){
+//        int thamso = 8;
+//        Object[] giatri = new Object[thamso];
+//        giatri[0] = khachthue.getMaKhach();
+//        giatri[1] = khachthue.getTenKhach();
+//        giatri[2] = khachthue.getPhai();
+//        giatri[3] = khachthue.getCmnd();
+//        giatri[4] = khachthue.getQueQuan();
+//        giatri[5] = khachthue.getNgheNghiep();
+//        giatri[6] = khachthue.getTaiKhoan();
+//        giatri[7] = khachthue.getMatKhau();
+//        return data.Update("{call ThemKhachThueDatPhong(?,?,?,?,?,?,?,?)}", giatri, thamso);
+//    }
+    
     public int ThemKhachThueDatPhong(KhachThueDTO khachthue){
-        int thamso = 8;
-        Object[] giatri = new Object[thamso];
-        giatri[0] = khachthue.getMaKhach();
-        giatri[1] = khachthue.getTenKhach();
-        giatri[2] = khachthue.getPhai();
-        giatri[3] = khachthue.getCmnd();
-        giatri[4] = khachthue.getQueQuan();
-        giatri[5] = khachthue.getNgheNghiep();
-        giatri[6] = khachthue.getTaiKhoan();
-        giatri[7] = khachthue.getMatKhau();
-        return data.Update("{call ThemKhachThueDatPhong(?,?,?,?,?,?,?,?)}", giatri, thamso);
+    int thamso = 8;
+    Object[] giatri = new Object[thamso];
+    giatri[0] = khachthue.getMaKhach();
+    giatri[1] = khachthue.getTenKhach();
+    giatri[2] = khachthue.getPhai();
+    giatri[3] = khachthue.getCmnd();
+    giatri[4] = khachthue.getQueQuan();
+    giatri[5] = khachthue.getNgheNghiep();
+    giatri[6] = khachthue.getTaiKhoan();
+    giatri[7] = khachthue.getMatKhau();
+    
+    // Thực hiện truy vấn kiểm tra CMND đã tồn tại hay chưa
+    ResultSet rs = data.ExecuteTruyVanTraVeDongDuLieu("SELECT COUNT(*) FROM KHACH_THUE WHERE CMND = ?", new Object[]{khachthue.getCmnd()},1);
+    try {
+        if (rs.next() && rs.getInt(1) > 0) {
+            // CMND đã tồn tại, hiện thông báo lỗi và không thực hiện thêm mới
+            JOptionPane.showMessageDialog(null, "CMND đã tồn tại, không thể thêm mới khách thuê.");
+            return 0;
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
     }
+    
+    // Thực hiện truy vấn thêm mới khách thuê
+    return data.Update("{call ThemKhachThueDatPhong(?,?,?,?,?,?,?,?)}", giatri, thamso);
+}
     
     //xóa khách thuê
     public int XoaKhachThue(KhachThueDTO khachthue) {
@@ -105,6 +146,17 @@ public class KhachThueDAL {
         giatri[3] = khachthue.getCmnd();
         giatri[4] = khachthue.getQueQuan();
         giatri[5] = khachthue.getNgheNghiep();
+        ResultSet rs = data.ExecuteTruyVanTraVeDongDuLieu("SELECT COUNT(*) FROM KHACH_THUE WHERE CMND = ?", new Object[]{khachthue.getCmnd()},1);
+        try {
+            if (rs.next() && rs.getInt(1) > 0) {
+                // CMND đã tồn tại, hiện thông báo lỗi và không thực hiện thêm mới
+                JOptionPane.showMessageDialog(null, "CMND đã tồn tại, không thể cập nhật khách thuê.");
+                return 0;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
         return data.Update("{call SuaKhachThue(?,?,?,?,?,?)}", giatri, thamso);
     }
 }

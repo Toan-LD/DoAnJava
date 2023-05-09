@@ -112,7 +112,9 @@ ALTER TABLE CT_DICHVU
 ADD CONSTRAINT FK_DICHVU_CTDICHVU FOREIGN KEY (MaDichVu)
 REFERENCES DICH_VU (MaDichVu)
 
---------------Procedure---------------------
+--------------Procedure---------------------\
+drop proc ThemKhachThueKhongDatPhong
+
 create proc ThemKhachThueKhongDatPhong
 (
 @makhach varchar(5),
@@ -126,9 +128,49 @@ create proc ThemKhachThueKhongDatPhong
 )
 as
 	begin
+			-- Kiểm tra xem CMND đã tồn tại trong CSDL hay chưa
+			IF EXISTS(SELECT CMND FROM KHACH_THUE WHERE CMND = @cmnd)
+			BEGIN
+				RAISERROR ('CMND da ton tai trong CSDL', 16, 1);
+				RETURN;
+			END;
 			insert into KHACH_THUE values(@makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
 			insert into USER_KHACHTHUE (Username,Pwd,IsAdmin,MaKhach, TenKhach,Phai,CMND,QueQuan,NgheNghiep)values(@taikhoan,@matkhau,0, @makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
 	end
+
+
+drop proc ThemKhachThueDatPhong
+
+CREATE PROC ThemKhachThueDatPhong
+(
+    @makhach varchar(5),
+    @tenkhach nvarchar(30),
+    @phai nvarchar(5),
+    @cmnd varchar(15),
+    @quequan nvarchar(30),
+    @nghenghiep nvarchar(30),
+    @taikhoan varchar(25),
+    @matkhau varchar(25)
+)
+AS
+BEGIN
+    -- Kiểm tra xem CMND đã tồn tại trong CSDL hay chưa
+    IF EXISTS(SELECT CMND FROM KHACH_THUE WHERE CMND = @cmnd)
+    BEGIN
+        RAISERROR ('CMND da ton tai trong CSDL', 16, 1);
+        RETURN;
+    END;
+
+    -- Thêm khách thuê vào bảng KHACH_THUE
+    INSERT INTO KHACH_THUE VALUES(@makhach, @tenkhach, @phai, @cmnd, @quequan, @nghenghiep);
+
+    -- Thêm tài khoản khách thuê vào bảng USER_KHACHTHUE
+    INSERT INTO USER_KHACHTHUE (Username, Pwd, IsAdmin, MaKhach, TenKhach, Phai, CMND, QueQuan, NgheNghiep)
+    VALUES(@taikhoan, @matkhau, 0, @makhach, @tenkhach, @phai, @cmnd, @quequan, @nghenghiep);
+
+    -- Cập nhật trạng thái của tài khoản khách thuê thành đang sử dụng
+    UPDATE USER_KHACHTHUE SET TinhTrang = 1 WHERE MaKhach = @makhach;
+END;
 
 	create proc ThemKhachThueDatPhong
 (
@@ -192,6 +234,11 @@ create proc SuaKhachThue
 )
 as
 	begin
+		IF EXISTS(SELECT CMND FROM KHACH_THUE WHERE CMND = @cmnd)
+		BEGIN
+			RAISERROR ('CMND da ton tai trong CSDL', 16, 1);
+			RETURN;
+		END;
 		update KHACH_THUE
 		set TenKhach = @tenkhach,
 			Phai = @phai,

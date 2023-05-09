@@ -3,6 +3,7 @@ package DAL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -181,6 +182,20 @@ public class DBAccess {
         return this.result;
     }
     
+    public ResultSet ExecuteTruyVanTraVeDongDuLieu(String query, Object[] values, int n) {
+    try {
+        PreparedStatement stmt = conn.prepareStatement(query);
+        for(int i=0; i<n; i++) {
+            stmt.setObject(i+1, values[i]);
+        }
+        ResultSet rs = stmt.executeQuery();
+        return rs;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+    
     //Các phương thức getter và setter
     public void setHostName(String hostname) 
     {
@@ -201,4 +216,5 @@ public class DBAccess {
     {
         this.password = password;
     }
+
 }
