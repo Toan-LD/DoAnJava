@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.*;  
 /**
  *
  * @author TOAN
@@ -170,7 +171,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         jPanel3.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         jPanel3.setMinimumSize(new java.awt.Dimension(242, 41));
 
-        btnThem.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\add20.png")); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +178,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
             }
         });
 
-        btnXoa.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\thungrac20.jpg")); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.setEnabled(false);
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +186,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
             }
         });
 
-        btnSua.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\edit20.png")); // NOI18N
         btnSua.setText("Sửa");
         btnSua.setEnabled(false);
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -220,7 +218,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton3.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\xuatex25.png")); // NOI18N
         jButton3.setText("Load thông tin khách đặt phòng");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,8 +326,12 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                 txtCMNDActionPerformed(evt);
             }
         });
+        txtCMND.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCMNDKeyPressed(evt);
+            }
+        });
 
-        btnCapNhat.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\update20.png")); // NOI18N
         btnCapNhat.setText("Cập nhật");
         btnCapNhat.setEnabled(false);
         btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
@@ -339,7 +340,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
             }
         });
 
-        btnThemMoi.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\addnew20.png")); // NOI18N
         btnThemMoi.setText("Thêm mới");
         btnThemMoi.setEnabled(false);
         btnThemMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -410,7 +410,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                 .addGroup(gbThongTinKhachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnThemMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCapNhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         gbThongTinKhachLayout.setVerticalGroup(
             gbThongTinKhachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,7 +437,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                     .addComponent(jLabel10)
                     .addComponent(btnThemMoi)
                     .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Loại khách thuê"));
@@ -487,7 +487,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
             }
         });
 
-        btnTim.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\timkiem20.png")); // NOI18N
         btnTim.setText("Tìm");
         btnTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -513,7 +512,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTim)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(cbbLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -528,10 +527,9 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                     .addComponent(btnTim)
                     .addComponent(jLabel9)
                     .addComponent(cbbLuaChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        btnThoat.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\thoat20.jpg")); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -539,7 +537,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
             }
         });
 
-        btnExcel.setIcon(new javax.swing.ImageIcon("D:\\workspace\\DoAnJava\\src\\main\\java\\pic\\xuatex25.png")); // NOI18N
         btnExcel.setText("Load thông tin khách thuê");
         btnExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -601,9 +598,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(btnThoat))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -615,7 +610,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void txtMaKhachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaKhachActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaKhachActionPerformed
@@ -625,6 +620,17 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         if (txtTenKhach.getText().equals("") || txtCMND.getText().equals("") || txtNgheNghiep.getText().equals("") || txtQueQuan.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào không được để trống");
         } else {
+            boolean checkCMND;
+            String cmnd = txtCMND.getText();
+            Pattern regexChungMinh = Pattern.compile("^\\d{9}(?:\\d{3})?$");
+            // Số CMND gồm 9 chữ số, CCCD gồm 12 chữ số
+            if (!regexChungMinh.matcher(cmnd).find())
+            {
+                JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào CMND/CCCD không đúng định dạng");
+                checkCMND = false;
+            }
+            else checkCMND = true;
+            
             //gán giá trị để sửa khách thuê
             KhachThueDTO khachThueDTO = new KhachThueDTO();
             khachThueDTO.setMaKhach(txtMaKhach.getText());
@@ -635,7 +641,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
             khachThueDTO.setNgheNghiep(txtNgheNghiep.getText());
             khachThueDTO.setTaiKhoan(txtTaiKhoan.getText());
             
-            if(khachthue.SuaKhachThue(khachThueDTO) > 0) {//Nếu sửa thành công
+            if(khachthue.SuaKhachThue(khachThueDTO) > 0 || checkCMND) {//Nếu sửa thành công
                 try{
                     JOptionPane.showMessageDialog(rootPane, "Cập nhật thành công");
                     loadtbl.loadJTable(khachthue.LoadKhachThue(), tblKhachThue);
@@ -707,8 +713,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         txtQueQuan.setText("");
         txtTaiKhoan.setEnabled(true);
         txtMatKhau.setEnabled(true);
-
-        
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
@@ -785,7 +789,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         txtCMND.setText((String) tblKhachThue.getValueAt(index, 3));
         txtQueQuan.setText((String) tblKhachThue.getValueAt(index, 4));
         txtNgheNghiep.setText((String) tblKhachThue.getValueAt(index, 5));
-        
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void tblKhachThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachThueMouseClicked
@@ -806,7 +809,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblKhachThueMouseClicked
 
     private void txtCMNDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCMNDActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtCMNDActionPerformed
 
     private void btnThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoiActionPerformed
@@ -819,6 +822,16 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào không được để trống");
             }
         }
+        boolean checkCMND;
+        String cmnd = txtCMND.getText();
+        Pattern regexChungMinh = Pattern.compile("^\\d{9}(?:\\d{3})?$");
+        // Số CMND gồm 9 chữ số, CCCD gồm 12 chữ số
+        if (!regexChungMinh.matcher(cmnd).find())
+        {
+            JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào CMND/CCCD không đúng định dạng");
+            checkCMND = false;
+        }
+        else checkCMND = true;
         
         KhachThueDTO khachThueDTO = new KhachThueDTO();
         khachThueDTO.setMaKhach(txtMaKhach.getText());
@@ -829,10 +842,12 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         khachThueDTO.setCmnd(txtCMND.getText());
         khachThueDTO.setTaiKhoan(txtTaiKhoan.getText());
         khachThueDTO.setMatKhau(txtMatKhau.getText());
-
+        
+        
+        
         if(rbtnKhachCoDatPhong.isSelected()) {
 //            System.out.println("hehe");
-            if(khachthue.ThemKhachThueDatPhong(khachThueDTO) > 0) {
+            if(khachthue.ThemKhachThueDatPhong(khachThueDTO) > 0 || checkCMND) {
                 try {
                     JOptionPane.showMessageDialog(rootPane,"Đã thêm khách thuê thành công");
                     //load lại các table và bỏ check các radiobutton
@@ -850,7 +865,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         
         if(rbtnKhachKhongDatPhong.isSelected()) {
 //            System.out.println("huhu");
-            if(khachthue.ThemKhachThueKhongDatPhong(khachThueDTO) > 0) {
+            if(khachthue.ThemKhachThueKhongDatPhong(khachThueDTO) > 0 || checkCMND) {
                 try {
                     JOptionPane.showMessageDialog(rootPane, "Thêm khách thuê thành công");
                     loadtbl.loadJTable(khachthue.LoadKhachThue(), tblKhachThue);
@@ -862,6 +877,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                 }
             }
         }
+        
         txtMaKhach.setText("");
         txtTenKhach.setText("");
         txtCMND.setText("");
@@ -915,7 +931,11 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         Excel ex = new Excel();
         ex.writeExcel(tblKhachThue, "Khach Thue", title);
     }//GEN-LAST:event_btnExcelActionPerformed
-    
+
+    private void txtCMNDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCMNDKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCMNDKeyPressed
+
     /**
      * @param args the command line arguments
      */

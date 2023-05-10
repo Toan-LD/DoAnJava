@@ -134,10 +134,7 @@
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       <Component id="btnThoat" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                      <Component id="jPanel6" min="-2" pref="185" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jPanel6" min="-2" pref="185" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -284,9 +281,6 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnThem">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\workspace\DoAnJava\src\main\java\pic\add20.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
           </Properties>
           <Events>
@@ -295,9 +289,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnXoa">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\workspace\DoAnJava\src\main\java\pic\thungrac20.jpg"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -307,9 +298,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSua">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\workspace\DoAnJava\src\main\java\pic\edit20.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -321,9 +309,6 @@
     </Container>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\workspace\DoAnJava\src\main\java\pic\xuatex25.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Load th&#xf4;ng tin kh&#xe1;ch &#x111;&#x1eb7;t ph&#xf2;ng"/>
       </Properties>
       <Events>
@@ -472,7 +457,7 @@
                       <Component id="btnThemMoi" max="32767" attributes="0"/>
                       <Component id="btnCapNhat" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -503,7 +488,7 @@
                       <Component id="btnThemMoi" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMatKhau" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -648,13 +633,11 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCMNDActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCMNDKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCapNhat">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\workspace\DoAnJava\src\main\java\pic\update20.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -664,9 +647,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnThemMoi">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\workspace\DoAnJava\src\main\java\pic\addnew20.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Th&#xea;m m&#x1edb;i"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -792,7 +772,7 @@
                   <Component id="txtTimKiem" min="-2" pref="242" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnTim" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="cbbLuaChon" min="-2" max="-2" attributes="0"/>
@@ -810,7 +790,7 @@
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbbLuaChon" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="11" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -823,9 +803,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnTim">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\workspace\DoAnJava\src\main\java\pic\timkiem20.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="T&#xec;m"/>
           </Properties>
           <Events>
@@ -859,9 +836,6 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnThoat">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\workspace\DoAnJava\src\main\java\pic\thoat20.jpg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
       </Properties>
       <Events>
@@ -870,9 +844,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnExcel">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\workspace\DoAnJava\src\main\java\pic\xuatex25.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Load th&#xf4;ng tin kh&#xe1;ch thu&#xea;"/>
       </Properties>
       <Events>
