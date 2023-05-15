@@ -26,12 +26,12 @@ public class HoaDonDichVuDAL {
     }
     
     public ResultSet LoadPhongChuaCoHoaDon(HoaDonDichVuDTO hoaDonDichVu) throws Exception {
-        String sql = "select MaPhong From PHONG_TRO where MaPhong in(select MaPhong from CT_KHACH_THUE) and MaPhong not in(select MaPhong from HOA_DON )";
+        String sql = "select maphong from PHONG_TRO where MaPhong in(select MaPhong from CT_KHACH_THUE) and MaPhong not in (select MaPhong from HOA_DON where right(convert(varchar(10),  NgayLap,103),7) = right(convert(varchar(10),  '"+hoaDonDichVu.getNgayLapHoaDon()+"',103),7))";
         return rs = data.executeQuery(sql);
     }
     
     public ResultSet LoadPhongDaCoHoaDon(HoaDonDichVuDTO hoaDonDichVu) throws Exception {
-        String sql = "select MaPhong from PHONG_TRO where MaPhong in(select MaPhong from CT_KHACH_THUE) and MaPhong in (select MaPhong from HOA_DON)";
+        String sql = "select maphong from PHONG_TRO where MaPhong in(	select MaPhong from CT_KHACH_THUE) and MaPhong in (select MaPhong from HOA_DON where right(convert(varchar(10),  NgayLap,103),7) = right(convert(varchar(10), '"+hoaDonDichVu.getNgayLapHoaDon()+"',103),7))";
         return rs = data.executeQuery(sql);
     }
     

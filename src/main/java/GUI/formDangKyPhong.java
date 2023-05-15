@@ -393,6 +393,7 @@ public class formDangKyPhong extends javax.swing.JInternalFrame {
                     dangKyPhongDTO.setMaPhong((String) cbbDanhSachPhongTrong.getSelectedItem());
                     SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MM/yyyy");
                     dangKyPhongDTO.setNgayVaoPhong(dayFormat.format(ngayVaoPhong.getTime()));
+                    System.out.println(dayFormat.format(ngayVaoPhong.getTime()));
                     if(dangKyPhong.ThemKhachThueVaoPhongMoi(dangKyPhongDTO) > 0) {
                         JOptionPane.showMessageDialog(rootPane, "Đăng ký phòng thành công");
                         loadTbl.loadJTable(dangKyPhong.LoadKhachThueChuaCoPhong(), tblKhach);

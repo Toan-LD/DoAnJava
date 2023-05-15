@@ -620,16 +620,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         if (txtTenKhach.getText().equals("") || txtCMND.getText().equals("") || txtNgheNghiep.getText().equals("") || txtQueQuan.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào không được để trống");
         } else {
-            boolean checkCMND;
-            String cmnd = txtCMND.getText();
-            Pattern regexChungMinh = Pattern.compile("^\\d{9}(?:\\d{3})?$");
-            // Số CMND gồm 9 chữ số, CCCD gồm 12 chữ số
-            if (!regexChungMinh.matcher(cmnd).find())
-            {
-                JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào CMND/CCCD không đúng định dạng");
-                checkCMND = false;
-            }
-            else checkCMND = true;
+            
             
             //gán giá trị để sửa khách thuê
             KhachThueDTO khachThueDTO = new KhachThueDTO();
@@ -641,7 +632,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
             khachThueDTO.setNgheNghiep(txtNgheNghiep.getText());
             khachThueDTO.setTaiKhoan(txtTaiKhoan.getText());
             
-            if(khachthue.SuaKhachThue(khachThueDTO) > 0 || checkCMND) {//Nếu sửa thành công
+            if(khachthue.SuaKhachThue(khachThueDTO) > 0) {//Nếu sửa thành công
                 try{
                     JOptionPane.showMessageDialog(rootPane, "Cập nhật thành công");
                     loadtbl.loadJTable(khachthue.LoadKhachThue(), tblKhachThue);
@@ -776,7 +767,6 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         cbbPhai.setEnabled(true);
         gbThongTinKhach.setEnabled(true);
         btnCapNhat.setEnabled(true);
-        txtTaiKhoan.setEnabled(true);
         
         int index = tblKhachThue.getSelectedRow();
         txtMaKhach.setText((String) tblKhachThue.getValueAt(index,0));
@@ -822,16 +812,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào không được để trống");
             }
         }
-        boolean checkCMND;
-        String cmnd = txtCMND.getText();
-        Pattern regexChungMinh = Pattern.compile("^\\d{9}(?:\\d{3})?$");
-        // Số CMND gồm 9 chữ số, CCCD gồm 12 chữ số
-        if (!regexChungMinh.matcher(cmnd).find())
-        {
-            JOptionPane.showMessageDialog(rootPane, "Thông tin nhập vào CMND/CCCD không đúng định dạng");
-            checkCMND = false;
-        }
-        else checkCMND = true;
+        
         
         KhachThueDTO khachThueDTO = new KhachThueDTO();
         khachThueDTO.setMaKhach(txtMaKhach.getText());
@@ -847,7 +828,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         
         if(rbtnKhachCoDatPhong.isSelected()) {
 //            System.out.println("hehe");
-            if(khachthue.ThemKhachThueDatPhong(khachThueDTO) > 0 || checkCMND) {
+            if(khachthue.ThemKhachThueDatPhong(khachThueDTO) > 0) {
                 try {
                     JOptionPane.showMessageDialog(rootPane,"Đã thêm khách thuê thành công");
                     //load lại các table và bỏ check các radiobutton
@@ -865,7 +846,7 @@ public class formKhachThue extends javax.swing.JInternalFrame {
         
         if(rbtnKhachKhongDatPhong.isSelected()) {
 //            System.out.println("huhu");
-            if(khachthue.ThemKhachThueKhongDatPhong(khachThueDTO) > 0 || checkCMND) {
+            if(khachthue.ThemKhachThueKhongDatPhong(khachThueDTO) > 0) {
                 try {
                     JOptionPane.showMessageDialog(rootPane, "Thêm khách thuê thành công");
                     loadtbl.loadJTable(khachthue.LoadKhachThue(), tblKhachThue);
@@ -875,6 +856,8 @@ public class formKhachThue extends javax.swing.JInternalFrame {
                 }   catch (Exception ex) {
                     Logger.getLogger(formKhachThue.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Thêm khách thuê thất bại");
             }
         }
         

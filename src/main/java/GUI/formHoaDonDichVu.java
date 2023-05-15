@@ -536,7 +536,6 @@ public class formHoaDonDichVu extends javax.swing.JInternalFrame {
             HoaDonDichVuDTO hoaDonDichVuDTO = new HoaDonDichVuDTO();
             Date ngayHienTai = new Date(System.currentTimeMillis());
             java.text.SimpleDateFormat dayFormat = new java.text.SimpleDateFormat("dd/MM/yyyy");
-            System.out.println(dayFormat.format(ngayHienTai));
             hoaDonDichVuDTO.setMaPhong(cbbPhongChuaCoHoaDon.getSelectedItem().toString());
             String ngayLap = dayFormat.format(ngayHienTai.getTime());
             System.out.println(ngayLap);
@@ -624,7 +623,7 @@ public class formHoaDonDichVu extends javax.swing.JInternalFrame {
                 txtDonGia.setText(rs.getString(3).toString());
                 jLabel7.setText(rs.getString(4).toString());
                 //Nếu như dịch vụ là những dịch vụ trả tiền mặc định theo tháng 
-                if (txtTenDichVu.getText().toString().equals("Điện") || txtTenDichVu.getText().toString().equals("Nước (máy)")) {
+                if (txtTenDichVu.getText().toString().equals("Điện") || txtTenDichVu.getText().toString().equals("Nước (uống)") || txtTenDichVu.getText().toString().equals("Nước (máy)")) {
                     txtSoLuong.setText("");//bỏ gán giá trị mặc dịnh cho textfiled
                     txtSoLuong.setEnabled(true);//enable textfield để người dùng nhập vào
                 } else {

@@ -134,6 +134,14 @@ as
 				RAISERROR ('CMND da ton tai trong CSDL', 16, 1);
 				RETURN;
 			END;
+
+				-- Kiểm tra định dạng của CMND
+			IF (LEN(@cmnd) <> 9 OR @cmnd NOT LIKE '[0-9]%' OR @cmnd LIKE '%[^0-9]%')
+			BEGIN
+				RAISERROR ('CMND không đúng định dạng.', 16, 1);
+				RETURN;
+			END;
+
 			insert into KHACH_THUE values(@makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
 			insert into USER_KHACHTHUE (Username,Pwd,IsAdmin,MaKhach, TenKhach,Phai,CMND,QueQuan,NgheNghiep)values(@taikhoan,@matkhau,0, @makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
 	end
@@ -161,6 +169,13 @@ BEGIN
         RETURN;
     END;
 
+	-- Kiểm tra định dạng của CMND
+    IF (LEN(@cmnd) <> 9 OR @cmnd NOT LIKE '[0-9]%' OR @cmnd LIKE '%[^0-9]%')
+    BEGIN
+        RAISERROR ('CMND không đúng định dạng.', 16, 1);
+        RETURN;
+    END;
+
     -- Thêm khách thuê vào bảng KHACH_THUE
     INSERT INTO KHACH_THUE VALUES(@makhach, @tenkhach, @phai, @cmnd, @quequan, @nghenghiep);
 
@@ -172,23 +187,6 @@ BEGIN
     UPDATE USER_KHACHTHUE SET TinhTrang = 1 WHERE MaKhach = @makhach;
 END;
 
-	create proc ThemKhachThueDatPhong
-(
-@makhach varchar(5),
-@tenkhach nvarchar(30),
-@phai nvarchar(5),
-@cmnd varchar(15),
-@quequan nvarchar(30),
-@nghenghiep nvarchar(30),
-@taikhoan varchar(25),
-@matkhau varchar(25)
-)
-as
-	begin
-			insert into KHACH_THUE values(@makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
-			insert into USER_KHACHTHUE (Username,Pwd,IsAdmin,MaKhach, TenKhach,Phai,CMND,QueQuan,NgheNghiep)values(@taikhoan,@matkhau,0, @makhach,@tenkhach,@phai,@cmnd,@quequan,@nghenghiep)
-			update USER_KHACHTHUE set TinhTrang = 1 where MaKhach = @makhach 
-	end
 
 CREATE PROC XoaKhachThue
 (

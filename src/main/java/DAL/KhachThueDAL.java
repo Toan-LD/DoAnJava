@@ -71,6 +71,12 @@ public class KhachThueDAL {
         giatri[5] = khachthue.getNgheNghiep();
         giatri[6] = khachthue.getTaiKhoan();
         giatri[7] = khachthue.getMatKhau();
+        String regex = "[0-9]{9}";
+            if (!khachthue.getCmnd().matches(regex)) {
+            JOptionPane.showMessageDialog(null, "CMND không hợp lệ, vui lòng nhập đúng định dạng 9 chữ số.");
+            return 0;
+        }
+        
         // Thực hiện truy vấn kiểm tra CMND đã tồn tại hay chưa
         ResultSet rs = data.ExecuteTruyVanTraVeDongDuLieu("SELECT COUNT(*) FROM KHACH_THUE WHERE CMND = ?", new Object[]{khachthue.getCmnd()},1);
         try {
@@ -111,6 +117,13 @@ public class KhachThueDAL {
     giatri[6] = khachthue.getTaiKhoan();
     giatri[7] = khachthue.getMatKhau();
     
+    
+    String regex = "[0-9]{9}";
+        if (!khachthue.getCmnd().matches(regex)) {
+        JOptionPane.showMessageDialog(null, "CMND không hợp lệ, vui lòng nhập đúng định dạng 9 chữ số.");
+        return 0;
+    }
+    
     // Thực hiện truy vấn kiểm tra CMND đã tồn tại hay chưa
     ResultSet rs = data.ExecuteTruyVanTraVeDongDuLieu("SELECT COUNT(*) FROM KHACH_THUE WHERE CMND = ?", new Object[]{khachthue.getCmnd()},1);
     try {
@@ -146,6 +159,14 @@ public class KhachThueDAL {
         giatri[3] = khachthue.getCmnd();
         giatri[4] = khachthue.getQueQuan();
         giatri[5] = khachthue.getNgheNghiep();
+        
+        
+        String regex = "[0-9]{9}";
+            if (!khachthue.getCmnd().matches(regex)) {
+            JOptionPane.showMessageDialog(null, "CMND không hợp lệ, vui lòng nhập đúng định dạng 9 chữ số.");
+            return 0;
+        }
+        
         ResultSet rs = data.ExecuteTruyVanTraVeDongDuLieu("SELECT COUNT(*) FROM KHACH_THUE WHERE CMND = ?", new Object[]{khachthue.getCmnd()},1);
         try {
             if (rs.next() && rs.getInt(1) > 0) {
